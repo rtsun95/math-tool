@@ -1,6 +1,5 @@
 #include <iostream>
 #include <iomanip>
-
 #include "math_operator.h"
 
 using namespace std;

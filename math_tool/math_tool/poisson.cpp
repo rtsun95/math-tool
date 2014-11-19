@@ -5,12 +5,15 @@
 
 using namespace std;
 
-void poisson::distribution(){
+poisson::poisson(){
 	ask();
-	print();
 }
 
-void poisson::ask(){
+void poisson::ask(void){
+	distribution();
+}
+
+void  poisson::distribution(void){
 	cout << "Please enter the parameter ¦Ë : " << endl;
 	cin >> parameter;
 	do{
@@ -18,11 +21,13 @@ void poisson::ask(){
 		cin >> size;
 		if (size < 0) cout << "Please enter a size greater than 0" << endl;
 	} while (size < 0);
+	distribution_print();
 }
 
-void poisson::print(){
+void  poisson::distribution_print(){
 	int count = 0;
 	double cdf = 0;
+	double answer;
 	while (size >= count){
 		answer = formula(parameter, count);
 		//if (answer < 0.0000000001) answer = 0;
@@ -35,17 +40,17 @@ void poisson::print(){
 	}
 }
 
-double poisson::factorial_division(double y, int n){
+double  poisson::factorial_division(double _y, int _n){
 	double result = 1;
-	for (int i = n; i > 0; i--){
-		result *= y / i;
+	for (int i = _n; i > 0; i--){
+		result *= _y / i;
 	}
 	return result;
 }
 
-double poisson::formula(double m, int x){
-	if (x == 0) return exp(-m);
-	else return exp(-m) * factorial_division(m, x);
+double  poisson::formula(double _m, int _x){
+	if (_x == 0) return exp(-_m);
+	else return exp(-_m) * factorial_division(_m, _x);
 }
 
 

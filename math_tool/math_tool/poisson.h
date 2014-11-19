@@ -1,11 +1,14 @@
-class poisson {
-public:
+class poisson{
+	double parameter;
+	int size;
 	void distribution();
-
-private:
-	double parameter, size, answer;
 	void ask();
-	void print();
+	void distribution_print();
 	double factorial_division(double, int);
 	double formula(double, int);
+
+public:
+	poisson();
 };
+
+
