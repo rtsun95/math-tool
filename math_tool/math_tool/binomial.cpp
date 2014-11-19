@@ -1,20 +1,21 @@
 #include <iostream>
 #include <iomanip>
 #include "binomial.h"
- 
+
 using namespace std;
 
+binomial::binomial(){
+	start();
+}
 
-
-binomial::binomial()
-{
-	char restart;
+void binomial::start(void) {
+	char recommencer;
 	bool rec = true;
 	while (rec == true) {
 		binomiale_2();
-		cout << endl << endl << "Do you want to restart? (y = yes, n = no) " << endl;
-		cin >> restart;
-		if (restart == 'y' || restart == 'Y') {
+		cout << endl << endl << "Voulez-vous recommencer? (o=oui/n=non)" << endl;
+		cin >> recommencer;
+		if (recommencer == 'o' || recommencer == 'O') {
 			rec = true;
 		}
 		else {
@@ -23,54 +24,7 @@ binomial::binomial()
 	}
 }
 
-
-binomial::~binomial()
-{
-}
-
-
-
-double factoriel(double n) {
-	double factoriel = 1;
-	if (n < 0) {
-		cout << "Erreur !" << endl;
-	}
-	if (n == 0) {
-		factoriel = 1;
-	}
-	else {
-		while (n > 0) {
-			factoriel = n*factoriel;
-			n--;
-		}
-	}
-	return factoriel;
-}
-
-double combinaison(double n, double x) {
-	double combinaison = factoriel(n) / (factoriel(x) * factoriel(n - x));
-	return combinaison;
-}
-
-double binomiale(double n, double k, double prob) {
-	double prob_compl = 1 - prob;
-	double resultat = combinaison(n, k)*pow(prob, k)*pow(prob_compl, (n - k));
-	return resultat;
-}
-
-
-double cdf(double nb_lancer, double nb_succes, double probabilite) {
-	double x = 0;
-	double reponse = 0;
-	while (x < nb_succes) {
-		reponse = reponse + binomiale(nb_lancer, x, probabilite);
-		x++;
-	}
-	return reponse;
-}
-
-
-void binomiale_2(void) {
+void binomial::binomiale_2(void) {
 	double probabilite;
 	double nb_succes;
 	double grandeur;
@@ -94,3 +48,47 @@ void binomiale_2(void) {
 		nb_lancer++;
 	}
 }
+
+
+double binomial::factorial(double n) {
+	double factorial = 1;
+	if (n < 0) {
+		cout << "Error !" << endl;
+	}
+	if (n == 0) {
+		factorial = 1;
+	}
+	else {
+		while (n > 0) {
+			factorial = n*factorial;
+			n--;
+		}
+	}
+	return factorial;
+}
+
+double binomial::combinaison(double n, int x) {
+	double combinaison = factorial(n) / (factorial(x) * factorial(n - x));
+	return combinaison;
+}
+
+double binomial::binom_formula(double n, double k, double prob) {
+	double prob_compl = 1 - prob;
+	double resultat = combinaison(n, k)*pow(prob, k)*pow(prob_compl, (n - k));
+	return resultat;
+}
+
+
+double binomial::cdf(double nb_lancer, double nb_succes, double probabilite) {
+	double x = 0;
+	double reponse = 0;
+	while (x < nb_succes) {
+		reponse = reponse + binom_formula(nb_lancer, x, probabilite);
+		x++;
+	}
+	return reponse;
+}
+
+
+
+
