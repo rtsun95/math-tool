@@ -5,23 +5,12 @@
 using namespace std;
 
 binomial::binomial(){
-	start();
+	system("CLS");
+	ask();
 }
 
-void binomial::start(void) {
-	char recommencer;
-	bool rec = true;
-	while (rec == true) {
-		binomiale_2();
-		cout << endl << endl << "Voulez-vous recommencer? (o=oui/n=non)" << endl;
-		cin >> recommencer;
-		if (recommencer == 'o' || recommencer == 'O') {
-			rec = true;
-		}
-		else {
-			rec = false;
-		}
-	}
+void binomial::ask(void) {
+	binomiale_2();
 }
 
 void binomial::binomiale_2(void) {
@@ -31,11 +20,11 @@ void binomial::binomiale_2(void) {
 	double nb_lancer;
 	double resultat;
 
-	cout << "Entrer la probabilite de succes" << endl;
+	cout << "Enter the success probabilty" << endl;
 	cin >> probabilite;
-	cout << "Entrer le nombre de succes" << endl;
+	cout << "Enter the number of success" << endl;
 	cin >> nb_succes;
-	cout << "Entrer la grandeur de la distribution" << endl;
+	cout << "Enter the size of the distribution" << endl;
 	cin >> grandeur;
 
 	nb_lancer = nb_succes;

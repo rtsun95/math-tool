@@ -1,5 +1,5 @@
 class binomial{
-	void start(void);
+	void ask(void);
 	double combinaison(double n, int x);
 	double binom_formula(double n, double k, double prob);
 	double cdf(double nb_lancer, double nb_succes, double probabilite);

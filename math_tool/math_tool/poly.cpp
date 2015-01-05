@@ -1,59 +1,51 @@
+#include <iostream>
 #include "poly.h"
 
-
-poly::poly()
-{
-	p.polyCreate();
-}
-
-
-poly::~poly()
-{
-}
+using namespace std;
 
 void printNegative(double n){
-	if (n < 0) printf("-");
+	if (n < 0) cout << "-";
 }
 
 void printPositive(double n){
-	if (n >= 0) printf("+");
+	if (n >= 0)  cout << "+";
 }
 
 void printExponenent(int n){
-	if (n > 1) printf("x^%d ", n);
-	else if (n == 1) printf("x ");
+	if (n > 1)  cout << "x^" << n;
+	else if (n == 1)  cout << "x ";
 }
 
 void printCoefficient(double n, int i){
-	if (fabs(n) != 1) printf("%g", fabs(n));
-	if (fabs(n) == 1 && i == 0) printf("1");
+	if (fabs(n) != 1)  cout << fabs(n);
+	if (fabs(n) == 1 && i == 0)  cout << "1";
 }
 
 struct poly *polyCreate(){
-	struct poly *p = malloc(sizeof(*p));
+	struct poly *p = new poly[1];
 	p->coefficient = 0.0;
 	p->position = -1;
-	p->next = NULL;
+	p->next = nullptr;
 	return p;
 }
 
 
 struct poly *polyDelete(struct poly *p){
-	if (p == NULL) return NULL;
-	while (p->next != NULL){
-		int *tmp = p;
+	if (p == nullptr) return nullptr;
+	while (p->next != nullptr){
+		poly *tmp = p;
 		p = p->next;
-		free(tmp);
+		delete tmp;
 	}
-	free(p);
-	return NULL;
+	delete p;
+	return nullptr;
 }
 
 
 
 struct poly *polySetCoefficient(struct poly *p, int i, double value){
 	struct poly *q = polyCreate();
-	if (p->next == NULL){
+	if (p->next == nullptr){
 		p->next = q;
 		p->position = i;
 		p->coefficient = value;
@@ -69,13 +61,13 @@ struct poly *polySetCoefficient(struct poly *p, int i, double value){
 }
 
 double polyGetCoefficient(struct poly *p, int i){
-	if (p == NULL) return;
-	int *start = p;
+	if (p == nullptr) return 0;
+	poly *start = p;
 	if (p->position == i) {
 		p = start;
 		return p->coefficient;
 	}
-	if (p->next == NULL){
+	if (p->next == nullptr){
 		p = start;
 		return 0;
 	}
@@ -86,17 +78,17 @@ double polyGetCoefficient(struct poly *p, int i){
 }
 
 int polyDegree(struct poly *p){
-	if (p == NULL) return 0;
-	int *start = p;
+	if (p == nullptr) return 0;
+	poly *start = p;
 	int max = 0;
-	if (p->next != NULL) max = polyDegree(p->next);
+	if (p->next != nullptr) max = polyDegree(p->next);
 	if (p->position > max) max = p->position;
 	p = start;
 	return max;
 }
 
 void polyPrint(struct poly *p){
-	if (p == NULL) return;
+	if (p == nullptr) return;
 	int i = polyDegree(p);
 	int passedFirst = 0;
 	for (i; i >= 0; i--){
@@ -105,7 +97,7 @@ void polyPrint(struct poly *p){
 			if (passedFirst){
 				printNegative(coef);
 				printPositive(coef);
-				printf(" ");
+				 cout << " ";
 				printCoefficient(coef, i);
 				printExponenent(i);
 			}
@@ -118,13 +110,13 @@ void polyPrint(struct poly *p){
 		}
 	}
 	if (passedFirst == 0){
-		printf("0");
+		 cout << "0";
 	}
-	printf("\n");
+	 cout << endl;
 }
 
 struct poly *polyCopy(struct poly *p){
-	if (p == NULL) return NULL;
+	if (p == nullptr) return nullptr;
 	struct poly *q = polyCreate();
 	int i;
 	for (i = 0; i <= polyDegree(p); i++){
@@ -134,14 +126,14 @@ struct poly *polyCopy(struct poly *p){
 }
 
 struct poly *polyAdd(struct poly *p0, struct poly *p1) {
-	if (p0 == NULL&&p1 == NULL) return NULL;
+	if (p0 == nullptr&&p1 == nullptr) return nullptr;
 	int i;
 	struct poly *p2 = polyCreate();
-	if (p0 == NULL){
+	if (p0 == nullptr){
 		p2 = polyCopy(p1);
 		return p2;
 	}
-	else if (p1 == NULL){
+	else if (p1 == nullptr){
 		p2 = polyCopy(p0);
 		return p2;
 	}
@@ -154,7 +146,7 @@ struct poly *polyAdd(struct poly *p0, struct poly *p1) {
 }
 
 struct poly *polyMultiply(struct poly *p0, struct poly *p1){
-	if (p0 == NULL&&p1 == NULL) return NULL;
+	if (p0 == nullptr&&p1 == nullptr) return nullptr;
 	int i, j;
 	struct poly *p2 = polyCreate();
 	for (i = 0; i <= polyDegree(p0); i++){
@@ -172,7 +164,7 @@ struct poly *polyMultiply(struct poly *p0, struct poly *p1){
 }
 
 struct poly *polyPrime(struct poly *p){
-	if (p == NULL)return NULL;
+	if (p == nullptr)return nullptr;
 	int i;
 	struct poly *p2 = polyCreate();
 	for (i = polyDegree(p); i > 0; i--)
@@ -181,11 +173,15 @@ struct poly *polyPrime(struct poly *p){
 }
 
 double polyEval(struct poly *p, double x){
-	if (p == NULL) return 0;
+	if (p == nullptr) return 0;
 	double result = 0;
 	int i;
 	for (i = 0; i <= polyDegree(p); i++){
 		result += pow(x, i)*polyGetCoefficient(p, i);
 	}
 	return result;
+}
+
+void polynomial(void){
+
 }

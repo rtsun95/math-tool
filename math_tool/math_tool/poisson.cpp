@@ -6,6 +6,7 @@
 using namespace std;
 
 poisson::poisson(){
+	system("CLS");
 	ask();
 }
 
@@ -14,7 +15,7 @@ void poisson::ask(void){
 }
 
 void  poisson::distribution(void){
-	cout << "Please enter the parameter ¦Ë : " << endl;
+	cout << "Please enter the parameter : " << endl;
 	cin >> parameter;
 	do{
 		cout << "Please enter the desired size of the distribution" << endl;

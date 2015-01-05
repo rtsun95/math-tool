@@ -1,6 +1,7 @@
 #include <iostream>
 #include "binomial.h"
 #include "poisson.h"
+#include "poly.h"
 
 using namespace std;
 
@@ -11,10 +12,10 @@ bool mainscreen(){
 	cout << "2 : Poisson distribution" << endl;
 	cout << "3 : Binomial distribution" << endl;
 	cin >> selector;
-	/*if (selector == 1){
+	if (selector == 1){
 	polynomial();
 	return true;
-	}*/
+	}
 	if (selector == 2){
 		poisson();
 		return true;
@@ -28,9 +29,20 @@ bool mainscreen(){
 
 int main(void){
 
-	do{
+	char restart;
+	bool rec = true;
+	while (rec == true) {
+		system("CLS");
 		mainscreen();
-	} while (false);
+		cout << endl << endl << "Would you want to restart ? (y=yes/n=no)" << endl;
+		cin >> restart;
+		if (restart == 'y' || restart == 'Y') {
+			rec = true;
+		}
+		else {
+			rec = false;
+		}
+	}
 
 	system("pause");
 	return 0;
