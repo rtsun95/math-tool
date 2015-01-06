@@ -7,7 +7,7 @@ using namespace std;
 
 bool mainscreen(){
 	int selector;
-	cout << "Please select witch program you want to use:" << endl;
+	cout << "Please select which program you want to use:" << endl;
 	cout << "1 : Polynomial operations" << endl;
 	cout << "2 : Poisson distribution" << endl;
 	cout << "3 : Binomial distribution" << endl;
