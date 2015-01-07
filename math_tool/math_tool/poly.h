@@ -21,6 +21,7 @@ struct poly *polyCopy(struct poly *p);
 struct poly *polyAdd(struct poly *p0, struct poly *p1);
 struct poly *polyMultiply(struct poly *p0, struct poly *p1);
 struct poly *polyPrime(struct poly *p);
+struct poly *polyInteg(struct poly *p);
 double polyEval(struct poly *p, double x);
 void polynomial(void);
 struct poly *getPoly(int x);

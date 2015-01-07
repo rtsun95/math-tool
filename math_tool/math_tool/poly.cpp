@@ -172,6 +172,15 @@ struct poly *polyPrime(struct poly *p){
 	return p2;
 }
 
+struct poly *polyInteg(struct poly *p){
+	if (p == nullptr)return nullptr;
+	int i;
+	struct poly *p2 = polyCreate();
+	for (i = polyDegree(p); i > 0; i--)
+		p2 = polySetCoefficient(p2, (i + 1), i/polyGetCoefficient(p, i));
+	return p2;
+}
+
 double polyEval(struct poly *p, double x){
 	if (p == nullptr) return 0;
 	double result = 0;
