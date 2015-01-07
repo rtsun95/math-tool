@@ -3,6 +3,7 @@
 #include "poisson.h"
 #include "poly.h"
 #include "PolyMenu.h"
+#include "Triangle.h"
 
 using namespace std;
 
@@ -16,11 +17,14 @@ void mainscreen(){
 	if (selector == 1){
 		polynomial();
 	}
-	if (selector == 2){
+	else if (selector == 2){
 		poisson();
 	}
-	if (selector == 3){
+	else if (selector == 3){
 		binomial();
+	}
+	else if (selector == 4){
+		Triangle();
 	}
 	return;
 }
