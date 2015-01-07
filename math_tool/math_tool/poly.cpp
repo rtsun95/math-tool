@@ -175,8 +175,9 @@ struct poly *polyInteg(struct poly *p){
 	if (p == nullptr)return nullptr;
 	int i;
 	struct poly *p2 = polyCreate();
-	for (i = polyDegree(p); i > 0; i--)
-		p2 = polySetCoefficient(p2, (i + 1), i/polyGetCoefficient(p, i));
+	for (i = polyDegree(p); i >= 0; i--){
+		p2 = polySetCoefficient(p2, (i + 1), polyGetCoefficient(p, i) / (i + 1));
+	}
 	return p2;
 }
 
@@ -196,9 +197,9 @@ double bissection(struct poly *p, double a, double b){
 	for (int i = 0; i < 100000; i++)
 	{
 		//Check if a or b is a root
-		if (polyEval(p,a) <= 0.0001) return a;
+		if (polyEval(p, a) <= 0.0001) return a;
 		else if (polyEval(p, b) <= 0.0001) return b;
-		
+
 
 		//we assign x as the middle point of a and b
 		x = (a + b) / 2.0;
