@@ -15,6 +15,7 @@ void polynomial(){
 	cout << "5 : Derive a polynomial" << endl;
 	cout << "6 : Integrate a polynomial" << endl;
 	cin >> selector;
+	system("CLS");
 	switch (selector)
 	{
 	case 1:

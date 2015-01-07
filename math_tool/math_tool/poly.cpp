@@ -184,6 +184,17 @@ double polyEval(struct poly *p, double x){
 
 struct poly *getPoly(void){
 	struct poly *p = polyCreate();
-
+	int number_coefficient;
+	cout << "Please enter the number of non-zero coeffiecient in the polynomial" << endl;
+	cin >> number_coefficient;
+	for (int i = 1; i <= number_coefficient; i++){
+		int power;
+		double coefficient;
+		cout << "What is the coefficient #" << i << "?" << endl;
+		cin >> coefficient;
+		cout << endl << "What is the degree of the coefficient?" << endl;
+		cin >> power;
+		polySetCoefficient(p, power, coefficient);
+	}
 	return p;
 }
