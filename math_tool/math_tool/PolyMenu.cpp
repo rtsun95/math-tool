@@ -15,9 +15,8 @@ void polynomial(){
 	cout << "5 : Derive a polynomial" << endl;
 	cout << "6 : Integrate a polynomial" << endl;
 	cin >> selector;
-	switch (selector)
-	{
-	case 1:
+
+	if (selector == 1){
 		poly *p = getPoly(1);
 		double a, b;
 		cout << "Left border?" << endl;
@@ -31,35 +30,54 @@ void polynomial(){
 			cout << endl << "Right border?" << endl;
 			cin >> b;
 		}
-		bissection(p, a, b);
-		break;
-	case 2:
+		cout << endl << "X = " << bissection(p, a, b) << endl;
+		polyDelete(p);
+	}
+	else if (selector == 2){
 		poly *p = getPoly(1);
 		poly *q = getPoly(2);
-		polyAdd(p, q);
-		break;
-	case 3:
+		poly *result = polyAdd(p, q);
+		polyPrint(result);
+		cout << endl;
+		polyDelete(p);
+		polyDelete(q);
+		polyDelete(result);
+	}
+	else if (selector == 3){
 		poly *p = getPoly(1);
 		poly *q = getPoly(2);
-		polyMultiply(p, q);
-		break;
-	case 4:
+		poly *result = polyMultiply(p, q);
+		polyPrint(result);
+		cout << endl;
+		polyDelete(p);
+		polyDelete(q);
+		polyDelete(result);
+	}
+	else if (selector == 4){
 		poly *p = getPoly(1);
 		double x;
 		cout << "Please enter the value of x :" << endl;
 		cin >> x;
-		polyEval(p, x);
-		break;
-	case 5:
+		cout << endl << "f(x) = " << polyEval(p, x) << endl;
+		polyDelete(p);
+	}
+	else if (selector == 5){
 		poly *p = getPoly(1);
-		polyPrime(p);
-		break;
-	case 6:
+		poly *q = polyPrime(p);
+		cout << "f'(x) = ";
+		polyPrint(q);
+		cout << endl;
+		polyDelete(p);
+		polyDelete(q);
+	}
+	else if (selector == 6){
 		poly *p = getPoly(1);
-		polyInteg(p);
-		break;
-	default:
-		break;
+		poly *q = polyInteg(p);
+		cout << "Integral of f(x) = ";
+		polyPrint(q);
+		cout << "+ C" << endl;
+		polyDelete(p);
+		polyDelete(q);
 	}
 	return;
 }

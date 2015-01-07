@@ -112,7 +112,6 @@ void polyPrint(struct poly *p){
 	if (passedFirst == 0){
 		cout << "0";
 	}
-	cout << endl;
 }
 
 struct poly *polyCopy(struct poly *p){
@@ -230,7 +229,7 @@ struct poly *getPoly(int x){
 		double coefficient;
 		cout << "What is the coefficient #" << i << "?" << endl;
 		cin >> coefficient;
-		cout << endl << "What is the degree of the coefficient?" << endl;
+		cout << "What is the degree of the coefficient?" << endl;
 		cin >> power;
 		polySetCoefficient(p, power, coefficient);
 	}

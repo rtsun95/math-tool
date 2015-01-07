@@ -2,6 +2,7 @@
 #include "binomial.h"
 #include "poisson.h"
 #include "poly.h"
+#include "PolyMenu.h"
 
 using namespace std;
 
