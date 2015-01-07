@@ -5,7 +5,7 @@
 
 using namespace std;
 
-bool mainscreen(){
+void mainscreen(){
 	int selector;
 	cout << "Please select which program you want to use:" << endl;
 	cout << "1 : Polynomial operations" << endl;
@@ -13,18 +13,15 @@ bool mainscreen(){
 	cout << "3 : Binomial distribution" << endl;
 	cin >> selector;
 	if (selector == 1){
-	polynomial();
-	return true;
+		polynomial();
 	}
 	if (selector == 2){
 		poisson();
-		return true;
 	}
 	if (selector == 3){
 		binomial();
-		return true;
 	}
-	else return false;
+	return;
 }
 
 int main(void){
@@ -34,7 +31,7 @@ int main(void){
 	while (rec == true) {
 		system("CLS");
 		mainscreen();
-		cout << endl << endl << "Would you want to restart ? (y=yes/n=no)" << endl;
+		cout << endl << endl << "Would you like to restart ? (y=yes/n=no)" << endl;
 		cin >> restart;
 		if (restart == 'y' || restart == 'Y') {
 			rec = true;

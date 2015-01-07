@@ -97,7 +97,7 @@ void polyPrint(struct poly *p){
 			if (passedFirst){
 				printNegative(coef);
 				printPositive(coef);
-				 cout << " ";
+				cout << " ";
 				printCoefficient(coef, i);
 				printExponenent(i);
 			}
@@ -110,9 +110,9 @@ void polyPrint(struct poly *p){
 		}
 	}
 	if (passedFirst == 0){
-		 cout << "0";
+		cout << "0";
 	}
-	 cout << endl;
+	cout << endl;
 }
 
 struct poly *polyCopy(struct poly *p){
@@ -182,7 +182,8 @@ double polyEval(struct poly *p, double x){
 	return result;
 }
 
-void polynomial(void){
+struct poly *getPoly(void){
+	struct poly *p = polyCreate();
 
-
+	return p;
 }
