@@ -182,10 +182,39 @@ double polyEval(struct poly *p, double x){
 	return result;
 }
 
-struct poly *getPoly(void){
+double bissection(struct poly *p, double a, double b){
+	//x will be a guess of the root between a and b while fx is f(x)
+	double x, fx;
+	for (int i = 0; i < 100000; i++)
+	{
+		//Check if a or b is a root
+		if (polyEval(p,a) <= 0.0001) return a;
+		else if (polyEval(p, b) <= 0.0001) return b;
+		
+
+		//we assign x as the middle point of a and b
+		x = (a + b) / 2.0;
+		//we apply the function f to x to obtain f(x)
+		fx = polyEval(p, x);
+		//if f(x) is close enough to zero (smaller than epsilon), return the value of x
+		if (fabs(fx) <= 0.0001)
+			return x;
+		//if f(x) is not big enough, if f(x) is positive, set x as the new value of b
+		if (fx > 0.0)
+			b = x;
+		//if f(x) is not big enough, if f(x) is negative, set x as the new value of b
+		else
+			a = x;
+	}
+	//if the maximum value of iterations is reached, just return the value of x
+	return x;
+}
+
+struct poly *getPoly(int x){
+	system("CLS");
 	struct poly *p = polyCreate();
 	int number_coefficient;
-	cout << "Please enter the number of non-zero coeffiecient in the polynomial" << endl;
+	cout << "Please enter the number of non-zero coeffiecient in the polynomial #" << x << endl;
 	cin >> number_coefficient;
 	for (int i = 1; i <= number_coefficient; i++){
 		int power;

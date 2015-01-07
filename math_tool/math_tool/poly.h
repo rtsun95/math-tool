@@ -23,4 +23,5 @@ struct poly *polyMultiply(struct poly *p0, struct poly *p1);
 struct poly *polyPrime(struct poly *p);
 double polyEval(struct poly *p, double x);
 void polynomial(void);
-struct poly *getPoly(void);
+struct poly *getPoly(int x);
+double bissection(struct poly *p, double a, double b);
