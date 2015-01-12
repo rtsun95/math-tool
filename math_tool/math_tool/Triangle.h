@@ -4,7 +4,7 @@ struct coord{
 class Triangle
 {
 	coord point_A, point_B, point_C;
-	double sideA, sideB, sideC;
+	double sideAB, sideBC, sideCA;
 	double angleA, angleB, angleC;
 	double perimeter, area;
 
@@ -17,7 +17,7 @@ public:
 	Triangle();
 	~Triangle();
 	double getAngle(char _angle);
-	double getSide();
+	double getSide(char _side);
 	void showInfo();
 
 };

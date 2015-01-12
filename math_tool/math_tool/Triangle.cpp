@@ -49,7 +49,23 @@ double Triangle::getAngle(char _angle){
 	else return 0;
 }
 
-double Triangle::getArea(){
+double Triangle::getSide(char _side){
+	if (_side == 'a' || _side == 'A')
+		return sideAB;
+	else if (_side == 'b' || _side == 'B')
+		return sideBC;
+	else if (_side == 'c' || _side == 'C')
+		return sideCA;
+	else return 0;
+}
 
-	return 0;
+double Triangle::getPerimeter(){
+	perimeter = sideAB + sideBC + sideCA;
+	return perimeter;
+}
+
+double Triangle::getArea(){
+	double semi_perimeter = perimeter / 2;
+	area = sqrt(semi_perimeter*(semi_perimeter - sideAB)*(semi_perimeter - sideBC)*(semi_perimeter - sideCA));
+	return area;
 }
