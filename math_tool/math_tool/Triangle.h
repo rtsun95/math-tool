@@ -16,9 +16,10 @@ public:
 	double getPerimeter();
 	Triangle();
 	~Triangle();
-	double getAngle();
+	double getAngle(char _angle);
 	double getSide();
 	void showInfo();
 
 };
+
 

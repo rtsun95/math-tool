@@ -23,9 +23,9 @@ void mainscreen(){
 	else if (selector == 3){
 		binomial();
 	}
-	else if (selector == 4){
-		Triangle();
-	}
+	//else if (selector == 4){
+	//	Triangle();
+	//}
 	return;
 }
 
