@@ -21,6 +21,7 @@ Triangle::Triangle()
 	angleA = angle_convert(acos((pow(sideAB, 2) - pow(sideBC, 2) - pow(sideCA, 2)) / (-2 * sideBC*sideCA)));
 	angleB = angle_convert(acos((pow(sideBC, 2) - pow(sideAB, 2) - pow(sideCA, 2)) / (-2 * sideAB*sideCA)));
 	angleC = angle_convert(acos((pow(sideCA, 2) - pow(sideBC, 2) - pow(sideAB, 2)) / (-2 * sideBC*sideAB)));
+	showInfo();
 }
 
 Triangle::~Triangle()
@@ -68,4 +69,23 @@ double Triangle::getArea(){
 	double semi_perimeter = perimeter / 2;
 	area = sqrt(semi_perimeter*(semi_perimeter - sideAB)*(semi_perimeter - sideBC)*(semi_perimeter - sideCA));
 	return area;
+}
+
+void Triangle::showInfo(){
+	system("CLS");
+	cout << fixed << setprecision(3);
+	cout << "Vertex A = ( " << setw(10) << point_A.x << ","
+		<< setw(10) << point_A.y << " )" << endl
+		<< "Vertex B = ( " << setw(10) << point_B.x << ","
+		<< setw(10) << point_B.y << " )" << endl
+		<< "Vertex C = ( " << setw(10) << point_C.x << ","
+		<< setw(10) << point_C.y<< " )" << endl << endl;
+	cout << "Length of side   AB = " << setw(10) << sideAB << endl
+		<< "Length of side   BC = " << setw(10) << sideBC << endl
+		<< "Length of side   AC = " << setw(10) << sideCA << endl
+		<< "Perimeter of the triangle = " << setw(10) << perimeter << endl
+		<< "Area of the triangle = " << setw(10) << area << endl << endl;
+	cout << "Angle A = " << setw(10) << angleA << "" << endl
+		<< "Angle B = " << setw(10) << angleB << "" << endl
+		<< "Angle C = " << setw(10) << angleC << "" << endl;
 }

@@ -13,6 +13,7 @@ void mainscreen(){
 	cout << "1 : Polynomial operations" << endl;
 	cout << "2 : Poisson distribution" << endl;
 	cout << "3 : Binomial distribution" << endl;
+	cout << "4 : Triangle information" << endl;
 	cin >> selector;
 	if (selector == 1){
 		polynomial();
@@ -23,9 +24,9 @@ void mainscreen(){
 	else if (selector == 3){
 		binomial();
 	}
-	//else if (selector == 4){
-	//	Triangle();
-	//}
+	else if (selector == 4){
+		Triangle();
+	}
 	return;
 }
 

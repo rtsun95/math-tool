@@ -10,16 +10,17 @@ class Triangle
 
 	coord read_coord(char _name);
 	double angle_convert(double _radian);
-	
-public:
 	double getArea();
 	double getPerimeter();
-	Triangle();
-	~Triangle();
+
+	
 	double getAngle(char _angle);
 	double getSide(char _side);
+	
+public:
+	~Triangle();
+	Triangle();
 	void showInfo();
-
 };
 
 
