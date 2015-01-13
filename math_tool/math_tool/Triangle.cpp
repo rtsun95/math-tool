@@ -16,8 +16,11 @@ Triangle::Triangle()
 	point_B = Triangle::read_coord('B');
 	point_C = Triangle::read_coord('C');
 	sideAB = sqrt(pow(point_B.x - point_A.x, 2) + pow(point_B.y - point_A.y, 2));
-	sideBC = sqrt(pow(point_B.x - point_A.x, 2) + pow(point_B.y - point_A.y, 2));
-	sideCA = sqrt(pow(point_B.x - point_A.x, 2) + pow(point_B.y - point_A.y, 2));
+	sideBC = sqrt(pow(point_C.x - point_B.x, 2) + pow(point_C.y - point_B.y, 2));
+	sideCA = sqrt(pow(point_A.x - point_C.x, 2) + pow(point_A.y - point_C.y, 2));
+	if (checkError()) return;
+	setPerimeter();
+	setArea();
 	angleA = angle_convert(acos((pow(sideAB, 2) - pow(sideBC, 2) - pow(sideCA, 2)) / (-2 * sideBC*sideCA)));
 	angleB = angle_convert(acos((pow(sideBC, 2) - pow(sideAB, 2) - pow(sideCA, 2)) / (-2 * sideAB*sideCA)));
 	angleC = angle_convert(acos((pow(sideCA, 2) - pow(sideBC, 2) - pow(sideAB, 2)) / (-2 * sideBC*sideAB)));
@@ -60,15 +63,18 @@ double Triangle::getSide(char _side){
 	else return 0;
 }
 
-double Triangle::getPerimeter(){
+void Triangle::setPerimeter(){
 	perimeter = sideAB + sideBC + sideCA;
-	return perimeter;
 }
 
-double Triangle::getArea(){
+void Triangle::setArea(){
 	double semi_perimeter = perimeter / 2;
 	area = sqrt(semi_perimeter*(semi_perimeter - sideAB)*(semi_perimeter - sideBC)*(semi_perimeter - sideCA));
-	return area;
+}
+
+bool Triangle::checkError(){
+	if (sideAB + sideBC < sideCA || sideBC + sideCA < sideAB || sideAB + sideCA < sideBC) return true;
+	else return false;
 }
 
 void Triangle::showInfo(){
@@ -80,11 +86,11 @@ void Triangle::showInfo(){
 		<< setw(10) << point_B.y << " )" << endl
 		<< "Vertex C = ( " << setw(10) << point_C.x << ","
 		<< setw(10) << point_C.y<< " )" << endl << endl;
-	cout << "Length of side   AB = " << setw(10) << sideAB << endl
-		<< "Length of side   BC = " << setw(10) << sideBC << endl
-		<< "Length of side   AC = " << setw(10) << sideCA << endl
+	cout << "Length of side.........AB = " << setw(10) << sideAB << endl
+		<< "Length of side.........BC = " << setw(10) << sideBC << endl
+		<< "Length of side.........AC = " << setw(10) << sideCA << endl
 		<< "Perimeter of the triangle = " << setw(10) << perimeter << endl
-		<< "Area of the triangle = " << setw(10) << area << endl << endl;
+		<< "Area of the triangle..... = " << setw(10) << area << endl << endl;
 	cout << "Angle A = " << setw(10) << angleA << "" << endl
 		<< "Angle B = " << setw(10) << angleB << "" << endl
 		<< "Angle C = " << setw(10) << angleC << "" << endl;

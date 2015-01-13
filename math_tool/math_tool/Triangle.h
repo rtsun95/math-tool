@@ -10,9 +10,9 @@ class Triangle
 
 	coord read_coord(char _name);
 	double angle_convert(double _radian);
-	double getArea();
-	double getPerimeter();
-
+	void setArea();
+	void setPerimeter();
+	bool checkError();
 	
 	double getAngle(char _angle);
 	double getSide(char _side);
